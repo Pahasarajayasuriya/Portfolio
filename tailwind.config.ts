@@ -84,8 +84,8 @@ export default {
         "scale-in": "scale-in 0.3s ease-out forwards",
       },
       boxShadow: {
-        "glow": "0 0 40px hsla(172, 66%, 50%, 0.3)",
-        "glow-lg": "0 0 60px hsla(172, 66%, 50%, 0.4)",
+        "glow": "0 0 40px hsla(222, 47%, 11%, 0.3)",
+        "glow-lg": "0 0 60px hsla(222, 47%, 11%, 0.4)",
       },
     },
   },
