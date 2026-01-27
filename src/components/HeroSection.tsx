@@ -1,6 +1,7 @@
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import profileImage from '@/assets/profile.jpg';
+import resume from '@/assets/Pahasara_Jayasuriya_SE.pdf';
 
 const HeroSection = () => {
   return (
@@ -9,10 +10,10 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8 animate-fade-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+            {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-primary">Available for opportunities</span>
-            </div>
+            </div> */}
 
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight">
@@ -26,23 +27,27 @@ const HeroSection = () => {
             </div>
 
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Creating elegant solutions to complex problems with clean, efficient code. 
-              Passionate about building scalable systems and modern web applications.
+              I build scalable, high-quality software solutions with clean code and a strong engineering mindset.
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="gap-2 group">
-                View Projects
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button size="lg" variant="outline">
-                Contact Me
-              </Button>
+              <a href="#projects">
+                <Button size="lg" className="gap-2 group hover:bg-zinc-800 hover:text-white hover:border-[#2525e8]">
+                  View Projects
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </a>
+              <a href={resume} download="Pahasara_Jayasuriya_SE.pdf">
+                <Button size="lg" variant="outline" className="gap-2 hover:bg-primary hover:text-primary-foreground hover:bg-zinc-800">
+                  <Download className="w-4 h-4" />
+                  Resume
+                </Button>
+              </a>
             </div>
 
             {/* Social Links */}
             <div className="flex items-center gap-6 pt-4">
-              <span className="text-sm text-muted-foreground">Follow me:</span>
+              {/* <span className="text-sm text-muted-foreground">Follow me:</span> */}
               <div className="flex gap-3">
                 <a
                   href="https://github.com/Pahasarajayasuriya"
@@ -73,12 +78,10 @@ const HeroSection = () => {
           {/* Right Content - Profile Image */}
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative">
-              {/* Background decorations */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl animate-pulse-glow" />
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent rounded-full" />
-              
+              {/* Animated gradient ring */}
+              <div className="absolute w-80 h-80 md:w-[28rem] md:h-[28rem] -left-20 -top-8 rounded-full border-4 border-transparent animate-spin-slow bg-gradient-to-tr from-primary/30 via-accent/30 to-primary/10 blur-[2px]" style={{ zIndex: 0 }} />
               {/* Profile image container */}
-              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-background shadow-2xl">
+              <div className="relative w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full overflow-hidden border-4 border-background -left-20 -top-8" style={{ zIndex: 1 }}>
                 <img
                   src={profileImage}
                   alt="Pahasara Nimnath Jayasuriya"
@@ -87,12 +90,12 @@ const HeroSection = () => {
               </div>
 
               {/* Floating badges */}
-              <div className="absolute -right-4 top-1/4 bg-card px-4 py-2 rounded-xl card-elevated animate-float">
+              {/* <div className="absolute -right-2 top-1/4 bg-card px-4 py-2 rounded-xl card-elevated animate-float">
                 <span className="text-sm font-semibold">🚀 Problem Solver</span>
               </div>
-              <div className="absolute -left-4 bottom-1/4 bg-card px-4 py-2 rounded-xl card-elevated animate-float" style={{ animationDelay: '1s' }}>
+              <div className="absolute -left-20 bottom-1/4 bg-card px-4 py-2 rounded-xl card-elevated animate-float" style={{ animationDelay: '1s' }}>
                 <span className="text-sm font-semibold">💻 Full Stack Dev</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

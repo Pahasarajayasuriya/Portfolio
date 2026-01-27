@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, Github, Linkedin, MapPin, Send, Loader2 } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, MapPin, Send, Loader2, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -116,32 +116,46 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact Info */}
           <div className="space-y-8">
-            <div className="bg-card p-8 rounded-2xl card-elevated">
+            <div className="bg-card p-8 rounded-2xl card-elevated border border-transparent hover:border-primary transition-colors duration-200">
               <h3 className="font-display font-semibold text-xl mb-6">Contact Information</h3>
               <div className="space-y-6">
                 {contactLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex items-center gap-4 group"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <div key={link.label} className="flex items-center gap-4 group">
+                    <a
+                      href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors"
+                    >
                       <link.icon className="w-5 h-5 text-primary" />
-                    </div>
+                    </a>
                     <div>
                       <p className="text-sm text-muted-foreground">{link.label}</p>
-                      <p className="font-medium group-hover:text-primary transition-colors">
-                        {link.value}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <p className="font-medium group-hover:text-primary transition-colors">
+                          {link.value}
+                        </p>
+                        {link.label === 'Email' && (
+                          <button
+                            type="button"
+                            className="p-1 rounded bg-muted hover:bg-primary/10 border border-border text-muted-foreground hover:text-primary transition-colors"
+                            aria-label="Copy email"
+                            onClick={() => {
+                              navigator.clipboard.writeText(link.value);
+                              toast({ title: 'Copied!', description: 'Email address copied to clipboard.' });
+                            }}
+                          >
+                            <Copy className="w-4 h-4" />
+                          </button>
+                        )}
+                      </div>
                     </div>
-                  </a>
+                  </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 rounded-2xl border border-primary/20">
+            <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 rounded-2xl border border-transparent hover:border-primary transition-colors duration-200">
               <h3 className="font-display font-semibold text-lg mb-3">Ready to collaborate?</h3>
               <p className="text-muted-foreground text-sm mb-4">
                 Whether you have a project in mind or just want to connect, I'd love to hear from you. Let's build something amazing together!
@@ -154,7 +168,7 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card p-8 rounded-2xl card-elevated">
+          <div className="bg-card p-8 rounded-2xl card-elevated border border-transparent hover:border-primary transition-colors duration-200">
             <h3 className="font-display font-semibold text-xl mb-6">Send a Message</h3>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -216,7 +230,7 @@ const ContactSection = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full gap-2" disabled={isSubmitting}>
+                <Button type="submit" className="w-full gap-2 hover:bg-zinc-800" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />

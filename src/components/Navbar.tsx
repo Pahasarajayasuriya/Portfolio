@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/context/ThemeContext';
+import profileImage from '@/assets/circle.png';
+import resume from '@/assets/Pahasara_Jayasuriya_SE.pdf';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -14,6 +17,7 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,10 +39,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">P</span>
-            </div>
-            <span className="font-display font-semibold text-lg hidden sm:block">Pahasara</span>
+            <img src={profileImage} alt="Pahasara Jayasuriya" className="w-10 h-10 rounded-xl object-cover" />
+            <span className="font-display font-semibold text-lg hidden sm:block">Pahasara Jayasuriya</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -56,11 +58,22 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="outline" size="sm" className="gap-2">
-              <Download className="w-4 h-4" />
-              Resume
-            </Button>
-            <Button size="sm">Contact Me</Button>
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg hover:bg-muted transition-colors"
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+            <a href={resume} download="Pahasara_Jayasuriya_SE.pdf">
+              <Button variant="outline" size="sm" className="gap-2 hover:bg-primary hover:text-primary-foreground hover:bg-zinc-800">
+                <Download className="w-4 h-4" />
+                Resume
+              </Button>
+            </a>
+            <a href="#contact">
+              <Button size="sm" className="gap-2 group hover:bg-zinc-800 hover:text-white hover:border-[#2525e8]">Contact Me</Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,12 +99,23 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <div className="flex gap-2 mt-4 px-4">
-                <Button variant="outline" size="sm" className="flex-1 gap-2">
-                  <Download className="w-4 h-4" />
-                  Resume
-                </Button>
-                <Button size="sm" className="flex-1">Contact</Button>
+              <div className="flex gap-2 mt-4 px-4 items-center">
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 rounded-lg hover:bg-muted transition-colors"
+                  title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                  {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                </button>
+                <a href={resume} download="Pahasara_Jayasuriya_SE.pdf" className="flex-1">
+                  <Button variant="outline" size="sm" className="flex-1 gap-2 hover:bg-primary hover:text-primary-foreground hover:border-primary">
+                    <Download className="w-4 h-4" />
+                    Resume
+                  </Button>
+                </a>
+                <a href="#contact" className="flex-1">
+                  <Button size="sm" className="w-full contact-btn">Contact</Button>
+                </a>
               </div>
             </div>
           </div>

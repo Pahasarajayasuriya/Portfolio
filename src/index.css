@@ -15,10 +15,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 10%;
 
-    --primary: 222 47% 11%;
+    --primary: 240 100% 25%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 92%;
+    --secondary: 75 12% 72%;
     --secondary-foreground: 220 20% 10%;
 
     --muted: 220 15% 92%;
@@ -41,7 +41,7 @@
     --card-shadow: 0 4px 24px -4px hsla(220, 20%, 10%, 0.08);
     --card-shadow-hover: 0 12px 40px -8px hsla(220, 20%, 10%, 0.15);
     --glow-primary: 0 0 40px hsla(222, 47%, 11%, 0.3);
-    --text-gradient: linear-gradient(135deg, hsl(222 47% 15%) 0%, hsl(222 47% 25%) 100%);
+    --text-gradient: linear-gradient(135deg, hsl(222, 97%, 12%) 0%, hsl(222, 92%, 31%) 100%);
   }
 
   .dark {
@@ -54,7 +54,7 @@
     --popover: 220 25% 12%;
     --popover-foreground: 220 15% 95%;
 
-    --primary: 222 47% 25%;
+    --primary: 240 100% 75%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 20% 18%;
@@ -77,6 +77,7 @@
     --card-shadow: 0 4px 24px -4px hsla(0, 0%, 0%, 0.4);
     --card-shadow-hover: 0 12px 40px -8px hsla(222, 47%, 25%, 0.2);
     --glow-primary: 0 0 60px hsla(222, 47%, 25%, 0.25);
+    --text-gradient: linear-gradient(135deg, hsl(220, 15%, 95%) 0%, hsl(220, 100%, 70%) 100%);
   }
 }
 
@@ -100,6 +101,12 @@
 }
 
 @layer components {
+    .category-box {
+      border: 1px solid hsl(240, 100%, 25%);
+    }
+    .dark .category-box {
+      border: 1px solid #fff;
+    }
   .gradient-text {
     @apply bg-clip-text text-transparent;
     background-image: var(--text-gradient);
@@ -174,11 +181,18 @@
   }
 
   .social-icon {
-    @apply w-12 h-12 rounded-full border border-border flex items-center justify-center transition-all duration-300 hover:border-primary hover:text-primary hover:scale-110;
+    @apply w-12 h-12 rounded-full border border-primary flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110;
   }
 }
 
 @layer utilities {
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spin-slow 8s linear infinite;
+    }
   .text-balance {
     text-wrap: balance;
   }

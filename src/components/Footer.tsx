@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import profileImage from '@/assets/circle.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,28 +11,29 @@ const Footer = () => {
           {/* Logo & Copyright */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold">P</span>
+              <div className="w-10 h-6 rounded-lg bg-primary flex items-center justify-center">
+                 <img src={profileImage} alt="Pahasara Jayasuriya" className="w-10 h-10 rounded-xl object-cover" />
               </div>
               <span className="font-display font-semibold">Pahasara Jayasuriya</span>
             </div>
+            <div className="h-2" />
             <p className="text-sm text-muted-foreground flex items-center gap-1">
-              Made with <Heart className="w-3 h-3 text-destructive fill-destructive" /> © {currentYear}
+              © {currentYear} Pahasara Jayasuriya. All rights reserved.  
             </p>
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-wrap justify-center gap-6">
+          {/* <div className="flex flex-wrap justify-center gap-6">
             {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-base md:text-lg text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link}
               </a>
             ))}
-          </div>
+          </div> */}
 
           {/* Social Links */}
           <div className="flex items-center gap-3">
@@ -39,23 +41,23 @@ const Footer = () => {
               href="https://github.com/Pahasarajayasuriya"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+              className="w-12 h-12 rounded-full border border-border flex items-center justify-center transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary"
             >
-              <Github className="w-4 h-4" />
+              <Github className="w-6 h-6" />
             </a>
             <a
               href="https://www.linkedin.com/in/pahasarajayasuriya"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+              className="w-12 h-12 rounded-full border border-border flex items-center justify-center transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary"
             >
-              <Linkedin className="w-4 h-4" />
+              <Linkedin className="w-6 h-6" />
             </a>
             <a
               href="mailto:pahasarajayasuriya@gmail.com"
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+              className="w-12 h-12 rounded-full border border-border flex items-center justify-center transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary"
             >
-              <Mail className="w-4 h-4" />
+              <Mail className="w-6 h-6" />
             </a>
           </div>
         </div>
