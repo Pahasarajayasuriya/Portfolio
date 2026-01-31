@@ -79,9 +79,9 @@ const HeroSection = () => {
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative">
               {/* Animated gradient ring */}
-              <div className="absolute w-80 h-80 md:w-[28rem] md:h-[28rem] -left-20 -top-8 rounded-full border-4 border-transparent animate-spin-slow bg-gradient-to-tr from-primary/30 via-accent/30 to-primary/10 blur-[2px]" style={{ zIndex: 0 }} />
+              <div className="absolute w-80 h-80 md:w-[28rem] md:h-[28rem] -left-10 -top-8 rounded-full border-4 border-transparent animate-spin-slow bg-gradient-to-tr from-primary/30 via-accent/30 to-primary/10 blur-[2px]" style={{ zIndex: 0 }} />
               {/* Profile image container */}
-              <div className="relative w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full overflow-hidden border-4 border-background -left-20 -top-8" style={{ zIndex: 1 }}>
+              <div className="relative w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full overflow-hidden border-4 border-background -left-10 -top-8">
                 <img
                   src={profileImage}
                   alt="Pahasara Nimnath Jayasuriya"
@@ -90,12 +90,12 @@ const HeroSection = () => {
               </div>
 
               {/* Floating badges */}
-              {/* <div className="absolute -right-2 top-1/4 bg-card px-4 py-2 rounded-xl card-elevated animate-float">
+              <div className="absolute -right-2 top-1/4 bg-card px-4 py-2 rounded-xl card-elevated animate-float">
                 <span className="text-sm font-semibold">🚀 Problem Solver</span>
               </div>
               <div className="absolute -left-20 bottom-1/4 bg-card px-4 py-2 rounded-xl card-elevated animate-float" style={{ animationDelay: '1s' }}>
                 <span className="text-sm font-semibold">💻 Full Stack Dev</span>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
